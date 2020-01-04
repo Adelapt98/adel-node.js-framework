@@ -1,0 +1,9 @@
+{
+  "LEVEL": "development",
+  "PORT": 2000,
+  "PGHOST": "5.39.44.17",
+  "PGUSER": "matrix",
+  "PGPASSWORD": "partintern",
+  "PGDATABASE": "todo",
+  "PGPORT": 5432
+}
