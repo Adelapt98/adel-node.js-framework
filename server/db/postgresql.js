@@ -2,14 +2,14 @@ const config = require('config')
 const {
   Pool
 } = require('pg')
-const config = {
+const _config = {
   host: config.get('PGHOST'),
   user: config.get('PGUSER'),
   password: config.get('PGPASSWORD'),
   database: config.get('PGDATABASE'),
   port: config.get('PGPORT')
 }
-const pool = new Pool(config)
+const pool = new Pool(_config)
 pool.on('error', (err, client) => {
   console.error('Unexpected error on idle client', err)
   process.exit(-1)

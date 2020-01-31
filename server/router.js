@@ -9,14 +9,14 @@ module.exports = app => {
 
   app.put('/api/signup', signUp)
 
-  app.get('/api/user/:userId', getProfile)
-  app.post('/api/user', updateUser)
+  // app.get('/api/user/:userId', getProfile)
+  // app.post('/api/user', updateUser)
 
-  app.get('/api/customer/:customerId', getCustomerProfile)
-  app.post('/api/customer', updateCustomer)
+  // app.get('/api/customer/:customerId', getCustomerProfile)
+  // app.post('/api/customer', updateCustomer)
 
-  app.get('/api/suplier/:suplierId', getSupplierProfile)
-  app.post('/api/suplier', updateSuplier)
+  // app.get('/api/suplier/:suplierId', getSupplierProfile)
+  // app.post('/api/suplier', updateSuplier)
 
   
 }

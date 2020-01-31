@@ -5,8 +5,12 @@ const {
     createHash
 } = require('../auth/auth')
 
-exports.signUp = (data) => {
-    userService.getUserByUserName(data.userName)
+const getUserByUserName = (userName) => {
+    return db.executeQuery(`SELECT * FROM user WHERE is_active = true AND is_deleted = false AND user_name = '${userName}'`)
+}
+
+const signUp = (data) => {
+    getUserByUserName(data.userName)
         .then((res) => {
             const user = res.rows[0]
             if (user === undefined) { // یوزرنیم تکراری نیست
@@ -64,11 +68,7 @@ exports.signUp = (data) => {
         })
 }
 
-exports.getUserByUserName = (userName) => {
-    return db.executeQuery(`SELECT * FROM user WHERE is_active = true AND is_deleted = false AND user_name = '${userName}'`)
-}
-
-exports.addUser = (user) => {
+const addUser = (user) => {
     user.signUpTime = new Date()
     return db.insertOrUpdate(
         `INSERT INTO "User" 
@@ -88,3 +88,6 @@ exports.addUser = (user) => {
                                          ${user.phoneNumber}
                              )`)
 }
+exports.signUp = signUp
+exports.addUser = addUser
+exports.getUserByUserName = getUserByUserName
